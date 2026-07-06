@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa modulů · Delivery System</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='44' fill='%23EFB93C'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23FFFEFB'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- Plovoucí horní lišta -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon">◉</div>
+        <div class="brand-text">
+          <strong>Mapa modulů</strong>
+          <span>Delivery System</span>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <button id="btn-add" class="btn btn-primary" title="Přidat nový modul (N)">
+          <span class="btn-ico">＋</span> Modul
+        </button>
+        <button id="btn-connect" class="btn" title="Režim propojování (C)">
+          <span class="btn-ico">⌁</span> Propojit
+        </button>
+        <button id="btn-layout" class="btn" title="Automaticky uspořádat moduly do kruhu">
+          <span class="btn-ico">✦</span> Uspořádat
+        </button>
+
+        <div class="divider"></div>
+
+        <div class="menu-wrap">
+          <button id="btn-export" class="btn" title="Export">
+            <span class="btn-ico">↑</span> Export <span class="chev">▾</span>
+          </button>
+          <div id="export-menu" class="menu hidden">
+            <button data-action="png"><b>PNG</b><span>Obrázek celé sítě</span></button>
+            <button data-action="pdf"><b>PDF</b><span>Dokument pro tisk</span></button>
+            <button data-action="json"><b>JSON</b><span>Záloha dat sítě</span></button>
+            <div class="menu-sep"></div>
+            <button data-action="import"><b>Import JSON</b><span>Načíst uloženou síť</span></button>
+            <button data-action="reset"><b>Obnovit ukázku</b><span>Vrátit výchozí síť</span></button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Plátno -->
+    <main id="canvas-wrap">
+      <svg id="canvas" xmlns="http://www.w3.org/2000/svg"></svg>
+
+      <div id="connect-hint" class="connect-hint hidden">
+        Režim propojování — klikni na <b>zdrojový</b> a poté <b>cílový</b> modul · Esc pro konec
+      </div>
+
+      <div class="zoom-pill">
+        <button id="zoom-out" title="Oddálit">−</button>
+        <span id="zoom-label">100 %</span>
+        <button id="zoom-in" title="Přiblížit">＋</button>
+        <button id="zoom-fit" title="Zobrazit vše">⌖</button>
+      </div>
+
+      <div class="stats-pill" id="stats-pill"></div>
+    </main>
+
+    <!-- Postranní panel -->
+    <aside id="sidebar"></aside>
+
+    <div id="toast-wrap"></div>
+    <input type="file" id="file-input" accept=".json,application/json" hidden>
+  </div>
+
+  <script src="js/export.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
